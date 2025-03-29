@@ -15,7 +15,7 @@ from utils.Contracts import Contracts
 
 async def swap(account: Account, token_from: str, token_to: str):
     token_from, token_to = token_from.upper(), token_to.upper()
-    dict_transaction = await create_dict_transaction(account.wallet_address, multiplier=2)
+    dict_transaction = await create_dict_transaction(account.wallet_address, multiplier=5)
     eth_price = await get_eth_price()
 
     amount = 0
@@ -44,6 +44,8 @@ async def swap(account: Account, token_from: str, token_to: str):
                 0
             ]
         ).build_transaction(dict_transaction)
+
+        txn_swap['gas'] = int(txn_swap['gas'] * 1.1)
 
         txn_hash = await send_txn(txn_swap, account, f"Quick Swap: swap {token_from}->{token_to}")
 
