@@ -6,7 +6,7 @@ QS_ENABLE = True
 QS_TOTAL_TRANSACTIONS = 11
 
 QS_DELAY_BETWEEN_SWAPS = (20, 60)
-QS_ETH_TO_USDC_AMOUNT = (0.0000012, 0.0000022)
+QS_ETH_TO_USDC_AMOUNT = (0.0000018, 0.0000022)
 
 # --------------------------------------------
 
