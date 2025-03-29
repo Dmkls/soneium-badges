@@ -16,7 +16,7 @@ from utils.Contracts import Contracts
 async def swap(account: Account, token_from: str, token_to: str):
     token_from, token_to = token_from.upper(), token_to.upper()
     dict_transaction = await create_dict_transaction(account.wallet_address, multiplier=5)
-    eth_price = await get_eth_price()
+    eth_price = 1700
 
     amount = 0
     usdc_to_get = 0
