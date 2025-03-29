@@ -26,6 +26,8 @@ async def process_account(private_key):
                 failed += 1
                 logger.error(f"{account.wallet_address} | Quick Swap | Не удалось сделать депозит")
             await asyncio.sleep(randint(config.QS_DELAY_BETWEEN_SWAPS[0], config.QS_DELAY_BETWEEN_SWAPS[1]))
+        if successes == config.QS_TOTAL_TRANSACTIONS:
+            logger.success(f"{account.wallet_address} | Quick Swap | Все транзакции выполнены успешно")
 
     if config.UB_ENABLE:
         logger.success(f"{account.wallet_address} | Untitled bank | Начинаю делать")
@@ -40,6 +42,8 @@ async def process_account(private_key):
                     failed += 1
                     logger.error(f"{account.wallet_address} | Untitled bank | Не удалось сделать депозит")
                 await asyncio.sleep(config.UB_DELAY_BETWEEN_DEPOSITS[0], config.UB_DELAY_BETWEEN_DEPOSITS[1])
+            if successes == config.UB_TOTAL_TRANSACTION:
+                logger.success(f"{account.wallet_address} | Untitled bank | Все транзакции выполнены успешно")
 
 async def start():
     for private_key in PRIVATE_KEYS:
