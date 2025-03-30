@@ -15,7 +15,7 @@ async def approve(account: Account) -> bool:
 
     try:
         txn_approve = await Contracts.untitled_bank_approve.functions.approve(
-            AsyncWeb3.to_checksum_address("0x905108D47409068Bbd771f7a5d8a89AFDA94050D"),
+            AsyncWeb3.to_checksum_address("0x2469362f63e9f593087EBbb5AC395CA607B5842F"),
             1000000
         ).build_transaction(dict_transaction)
 
